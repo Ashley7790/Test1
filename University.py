@@ -50,37 +50,37 @@ st.plotly_chart(fig)
 enrollment_data = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum().reset_index()
 
 # Create the stacked bar chart using Plotly
-fig = go.Figure()
+fig2 = go.Figure()
 
-fig.add_trace(go.Bar(
+fig2.add_trace(go.Bar(
     x=enrollment_data['YearTerm'],
     y=enrollment_data['Engineering Enrolled'],
     name='Engineering Enrolled'
 ))
-fig.add_trace(go.Bar(
+fig2.add_trace(go.Bar(
     x=enrollment_data['YearTerm'],
     y=enrollment_data['Business Enrolled'],
     name='Business Enrolled'
 ))
-fig.add_trace(go.Bar(
+fig2.add_trace(go.Bar(
     x=enrollment_data['YearTerm'],
     y=enrollment_data['Arts Enrolled'],
     name='Arts Enrolled'
 ))
-fig.add_trace(go.Bar(
+fig2.add_trace(go.Bar(
     x=enrollment_data['YearTerm'],
     y=enrollment_data['Science Enrolled'],
     name='Science Enrolled'
 ))
 
-fig.update_layout(
+fig2.update_layout(
     barmode='stack',
     title='Enrollment by Program',
     xaxis_title='YearTerm',
     yaxis_title='Number of Students Enrolled'
 )
 
-st.plotly_chart(fig)
+st.plotly_chart(fig2)
 
 
 
