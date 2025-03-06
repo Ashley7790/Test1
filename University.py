@@ -43,7 +43,7 @@ st.line_chart(df, x="YearTerm", y=["Admitted", "Enrolled", "Applications"])
 fig = px.line(df, x='YearTerm', y=['Retention Rate (%)', 'Student Satisfaction (%)'],
               labels={'value': 'Percent', 'YearTerm': 'Year and Term'},
               title='Retention Rate and Student Satisfaction by Year and Term')
-
+st.plotly_chart(fig)
 
 
 
