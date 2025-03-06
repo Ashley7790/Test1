@@ -21,12 +21,13 @@ selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df[
     #df = df[df['Term'] == term_filter]
 
 # KPIs
-st.title("University Trends in Admissions")
 st.metric("Total Applications", df['Applications'].sum())
 st.metric("Total Admitted", df['Admitted'].sum())
 st.metric("Total Enrolled", df['Enrolled'].sum())
 
-
+# Chart
+st.subheader("University Trends in Admissions")
+st.line_chart(df)
 
 
 
