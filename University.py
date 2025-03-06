@@ -1,15 +1,14 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 # Load Data
-df = px.read_csv('university_student_dashboard_data.csv')
+df = pd.read_csv('university_student_dashboard_data.csv')
 
 # Title of the app
 st.title("University Admission Data")
-
-# Create a sidebar filter for selecting a year
-selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
 
 # Filter Data
 filtered_df = df[df.Year == Year]
@@ -17,13 +16,52 @@ filtered_df = df[df.Year == Year]
 # Filter Data
 filtered_df2 = df[df.Term == Term]
 
+# Convert 'Year' and 'Term' columns to string 
+df['Year'] = df['Year'].astype(str)
+df['Term'] = df['Term'].astype(str)
+
+# Create the new column 'YearTerm'
+df['YearTerm'] = df['Year'] + ' ' + df['Term']
+
+term_data = df.groupby('YearTerm').agg(
+    {'Applications': 'sum', 'Admitted': 'sum', 'Enrolled': 'sum'}
+).reset_index()
+
+retention_satisfaction = df.groupby('YearTerm').agg(
+    {'Retention Rate (%)': 'mean', 'Student Satisfaction (%)': 'mean'}
+).reset_index()
+
+enrollment_by_department = df.groupby('YearTerm').agg(
+    {'Engineering Enrolled': 'sum', 'Business Enrolled': 'sum', 'Arts Enrolled': 'sum', 'Science Enrolled': 'sum'}
+).reset_index()
+
 #create plots
-fig1 = px.scatter(filtered_df, x="gdpPercap", y="lifeExp", size="pop", color="continent",
-                  hover_name="country", log_x=True, size_max=60, title="Life Expectancy vs GDP")
 
-fig2 = px.bar(filtered_df, x="continent", y="pop", color="continent", title="Population per Continent")
+fig1 =
+plt.figure(figsize=(12, 6))
+plt.plot(term_data['YearTerm'], term_data['Applications'], label='Applications', marker='o')
+plt.plot(term_data['YearTerm'], term_data['Admitted'], label='Admitted', marker='s')
+plt.plot(term_data['YearTerm'], term_data['Enrolled'], label='Enrolled', marker='^')
 
-fig3 = px.line(filtered_df, x="country", y="gdpPercap", color="continent", title="GDP Per Capita by Country")
+fig2 =
+plt.figure(figsize=(12, 6))
+plt.plot(retention_satisfaction['YearTerm'], retention_satisfaction['Retention Rate (%)'], label='Retention Rate (%)', marker='o')
+plt.plot(retention_satisfaction['YearTerm'], retention_satisfaction['Student Satisfaction (%)'], label='Student Satisfaction (%)', marker='s')
+
+
+fig3 = 
+# Create the stacked bar chart
+plt.figure(figsize=(12, 6))
+
+# Define the width of the bars
+bar_width = 0.8
+
+# Plot each department's enrollment as a separate bar segment
+bottom = np.zeros(len(enrollment_by_department))  # Initialize the bottom position for each bar
+for department in ['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']:
+  plt.bar(enrollment_by_department['YearTerm'], enrollment_by_department[department], bottom=bottom, label=department, width=bar_width)
+  bottom += enrollment_by_department[department]
+
 
 
 # Arrange the plots in a grid layout
