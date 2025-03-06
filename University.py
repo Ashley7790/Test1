@@ -30,7 +30,7 @@ st.metric("Total Admitted", df['Admitted'].sum())
 st.metric("Total Enrolled", df['Enrolled'].sum())
 
 # create dataframe for line chart
-appadmitenroll_df=
+#appadmitenroll_df=
 
 # Chart
 st.subheader("University Trends in Admissions")
