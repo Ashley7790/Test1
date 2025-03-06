@@ -60,7 +60,7 @@ plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readabili
 plt.legend(title='Program')
 plt.tight_layout()  # Adjust layout to prevent labels from overlapping
 
-plt.show()
+plt.show(ax)
 
 
 
