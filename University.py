@@ -46,23 +46,20 @@ fig = px.line(df, x='YearTerm', y=['Retention Rate (%)', 'Student Satisfaction (
               title='Retention Rate and Student Satisfaction by Year and Term')
 st.plotly_chart(fig)
 
-# Group data for the stacked bar chart
-enrollment_data = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum()
+fig2, ax = plt.subplots()
 
-# Create the stacked bar chart using matplotlib
-fig, ax = plt.subplots(figsize=(10, 6))
-enrollment_data.plot(kind='bar', stacked=True, ax=ax)
+ax.bar(df['YearTerm'], df['Engineering Enrolled'], label='Engineering Enrolled')
+ax.bar(df['YearTerm'], df['Business Enrolled'], bottom=df['Engineering Enrolled'], label='Business Enrolled')
+ax.bar(df['YearTerm'], df['Arts Enrolled'], bottom=df['Engineering Enrolled'] + df['Business Enrolled'], label='Arts Enrolled')
+ax.bar(df['YearTerm'], df['Science Enrolled'], bottom=df['Engineering Enrolled'] + df['Business Enrolled'] + df['Arts Enrolled'], label='Science Enrolled')
 
-# Customize the chart
-plt.title('Enrollment by Year and Term')
-plt.xlabel('YearTerm')
-plt.ylabel('Number of Students')
-plt.xticks(rotation=45, ha='right')
-plt.legend(title='Program')
-plt.tight_layout()
 
-# Display the chart in Streamlit
-st.pyplot(fig)
+ax.set_xlabel('Year and Term')
+ax.set_ylabel('Number of Students')
+ax.set_title('Enrolled Students by Faculty')
+ax.legend()
+
+st.pyplot(fig2)
 
 
 
