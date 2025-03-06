@@ -10,6 +10,13 @@ df = pd.read_csv('university_student_dashboard_data.csv')
 # Title of the app
 st.title("University Admission Data")
 
+# Convert 'Year' and 'Term' columns to string type if they are not already
+df['Year'] = df['Year'].astype(str)
+df['Term'] = df['Term'].astype(str)
+
+# Create the new column 'YearTerm'
+df['YearTerm'] = df['Year'] + ' ' + df['Term']
+
 # Create a sidebar filter for selecting a year
 selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
 
@@ -27,7 +34,7 @@ st.metric("Total Enrolled", df['Enrolled'].sum())
 
 # Chart
 st.subheader("University Trends in Admissions")
-st.line_chart(df, y="Applications")
+st.line_chart(df, y="Applications",x="YearTerm")
 
 
 
