@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 
 # Load Data
 df = pd.read_csv('university_student_dashboard_data.csv')
+df2 =
+
 
 # Title of the app
 st.title("University Admission Data")
@@ -34,7 +36,7 @@ st.metric("Total Enrolled", df['Enrolled'].sum())
 
 # Chart
 st.subheader("University Trends in Admissions")
-st.line_chart(df, y=df,x="YearTerm")
+st.line_chart(df, y="Admissions", y="Enrolled",x="YearTerm")
 
 
 
