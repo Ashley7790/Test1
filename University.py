@@ -18,7 +18,7 @@ df['Term'] = df['Term'].astype(str)
 df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 # Create a sidebar filter for selecting a year
-#selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
+selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
 
 
 # Sidebar Filter
