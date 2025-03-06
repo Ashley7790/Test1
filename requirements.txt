@@ -4,4 +4,4 @@ streamlit
 plotly
 xlrd
 numpy
-
+matplotlib.pyplot
