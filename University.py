@@ -15,10 +15,10 @@ selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df[
 
 
 # Sidebar Filter
-st.sidebar.header("Filters")
-term_filter = st.sidebar.selectbox("Select Term", ['All'] + list(df['Term'].unique()))
-if department_filter != 'All':
-    df = df[df['Term'] == term_filter]
+#st.sidebar.header("Filters")
+#term_filter = st.sidebar.selectbox("Select Term", ['All'] + list(df['Term'].unique()))
+#if department_filter != 'All':
+    #df = df[df['Term'] == term_filter]
 
 # KPIs
 st.title("University Trends in Admissions")
