@@ -40,7 +40,7 @@ st.line_chart(df, x="YearTerm", y=["Admitted", "Enrolled", "Applications"])
 
 
 # create a line chart for retention rate and student satisfaction by year and term
-fig = px.line(df, x='YearTerm', y=['RetentionRate', 'StudentSatisfaction'],
+fig = px.line(df, x='YearTerm', y=['RetentionRate (%)', 'StudentSatisfaction (%)'],
               labels={'value': 'Percent', 'YearTerm': 'Year and Term'},
               title='Retention Rate and Student Satisfaction by Year and Term')
 
