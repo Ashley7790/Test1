@@ -3,7 +3,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import plotly.graph_objects as go
+
 
 # Load Data
 df = pd.read_csv('university_student_dashboard_data.csv')
