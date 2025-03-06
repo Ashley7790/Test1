@@ -4,4 +4,4 @@ streamlit
 plotly
 xlrd
 numpy
-plotly.graph_objects
+
