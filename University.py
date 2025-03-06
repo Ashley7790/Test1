@@ -14,15 +14,20 @@ st.title("University Admission Data")
 df['Year'] = df['Year'].astype(str)
 df['Term'] = df['Term'].astype(str)
 
-# Create the new column 'YearTerm'
-df['YearTerm'] = df['Year'] + ' ' + df['Term']
-
-
-# Sidebar Filter
+# Sidebar Filters
 st.sidebar.header("Filters")
-term_filter = st.sidebar.selectbox("Select Year-Term", ['All'] + list(df['YearTerm'].unique()))
-if term_filter != 'All':
-    df = df[df['YearTerm'] == term_filter]
+
+# Year filter
+year_filter = st.sidebar.multiselect("Select Year", options=df['Year'].unique(), default=df['Year'].unique())
+df = df[df['Year'].isin(year_filter)]
+
+# Term filter
+term_filter = st.sidebar.multiselect("Select Term", options=df['Term'].unique(), default=df['Term'].unique())
+df = df[df['Term'].isin(term_filter)]
+
+
+# Create the new column 'YearTerm' (after filtering)
+df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 # KPIs
 st.metric("Total Applications", df['Applications'].sum())
