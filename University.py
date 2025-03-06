@@ -45,7 +45,41 @@ fig = px.line(df, x='YearTerm', y=['Retention Rate (%)', 'Student Satisfaction (
               title='Retention Rate and Student Satisfaction by Year and Term')
 st.plotly_chart(fig)
 
+# Group the data for the stacked bar chart
+enrollment_data = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum().reset_index()
 
+# Create the stacked bar chart using Plotly
+fig = go.Figure()
+
+fig.add_trace(go.Bar(
+    x=enrollment_data['YearTerm'],
+    y=enrollment_data['Engineering Enrolled'],
+    name='Engineering Enrolled'
+))
+fig.add_trace(go.Bar(
+    x=enrollment_data['YearTerm'],
+    y=enrollment_data['Business Enrolled'],
+    name='Business Enrolled'
+))
+fig.add_trace(go.Bar(
+    x=enrollment_data['YearTerm'],
+    y=enrollment_data['Arts Enrolled'],
+    name='Arts Enrolled'
+))
+fig.add_trace(go.Bar(
+    x=enrollment_data['YearTerm'],
+    y=enrollment_data['Science Enrolled'],
+    name='Science Enrolled'
+))
+
+fig.update_layout(
+    barmode='stack',
+    title='Enrollment by Program',
+    xaxis_title='YearTerm',
+    yaxis_title='Number of Students Enrolled'
+)
+
+st.plotly_chart(fig)
 
 
 
