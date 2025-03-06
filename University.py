@@ -13,8 +13,7 @@ st.title("University Admission Data")
 # Filter Data
 filtered_df = df[df.'Year' == 'Year']
 
-# Filter Data
-filtered_df2 = df[df.'Term' == 'Term']
+
 
 
 
