@@ -18,14 +18,14 @@ df['Term'] = df['Term'].astype(str)
 df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 # Create a sidebar filter for selecting a year
-selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
+#selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
 
 
 # Sidebar Filter
-#st.sidebar.header("Filters")
-#term_filter = st.sidebar.selectbox("Select Term", ['All'] + list(df['Term'].unique()))
-#if department_filter != 'All':
-    #df = df[df['Term'] == term_filter]
+st.sidebar.header("Filters")
+term_filter = st.sidebar.selectbox("Select Term", ['All'] + list(df['Term'].unique()))
+if term_filter != 'All':
+    df = df[df['Term'] == term_filter]
 
 # KPIs
 st.metric("Total Applications", df['Applications'].sum())
