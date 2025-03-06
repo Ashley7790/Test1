@@ -20,6 +20,12 @@ term_filter = st.sidebar.selectbox("Select Term", ['All'] + list(df['Term'].uniq
 if department_filter != 'All':
     df = df[df['Term'] == term_filter]
 
+# KPIs
+st.title("University Trends in Admissions")
+st.metric("Total Applications", df['Applications'].sum())
+st.metric("Total Admitted", df['Admitted'].sum())
+st.metric("Total Enrolled", df['Enrolled'].sum())
+
 
 
 
