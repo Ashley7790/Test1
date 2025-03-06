@@ -49,18 +49,23 @@ st.plotly_chart(fig)
 # Group data for the stacked bar chart
 enrollment_data = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum()
 
-# Create the stacked bar chart
-ax = enrollment_data.plot(kind='bar', stacked=True, figsize=(10, 6))
+# Group data for the stacked bar chart
+enrollment_data = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum()
 
-# Customize the chart (optional)
+# Create the stacked bar chart using matplotlib
+fig, ax = plt.subplots(figsize=(10, 6))
+enrollment_data.plot(kind='bar', stacked=True, ax=ax)
+
+# Customize the chart
 plt.title('Enrollment by Year and Term')
 plt.xlabel('YearTerm')
 plt.ylabel('Number of Students')
-plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+plt.xticks(rotation=45, ha='right')
 plt.legend(title='Program')
-plt.tight_layout()  # Adjust layout to prevent labels from overlapping
+plt.tight_layout()
 
-plt.show(ax)
+# Display the chart in Streamlit
+st.pyplot(fig)
 
 
 
