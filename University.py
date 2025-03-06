@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # Load Data
 df = pd.read_csv('university_student_dashboard_data.csv')
-df2 =
+
 
 
 # Title of the app
