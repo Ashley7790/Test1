@@ -39,6 +39,11 @@ st.subheader("University Trends in Admissions")
 st.line_chart(df, x="YearTerm", y=["Admitted", "Enrolled", "Applications"])
 
 
+# create a line chart for retention rate and student satisfaction by year and term
+fig = px.line(df, x="YearTerm", y=["Retention Rate (%)", "Student Satisfaction (%)"], title="Retention Rate and Student Satisfaction Over Time")
+st.plotly_chart(fig)
+
+
 
 
 
