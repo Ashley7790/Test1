@@ -17,9 +17,6 @@ df['Term'] = df['Term'].astype(str)
 # Create the new column 'YearTerm'
 df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
-# Create a sidebar filter for selecting a year
-selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
-
 
 # Sidebar Filter
 st.sidebar.header("Filters")
@@ -41,5 +38,4 @@ st.line_chart(df, y="Applications",x="YearTerm")
 
 
 
-# Display the Plotly chart in Streamlit
 
