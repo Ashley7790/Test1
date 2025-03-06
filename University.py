@@ -11,10 +11,10 @@ df = pd.read_csv('university_student_dashboard_data.csv')
 st.title("University Admission Data")
 
 # Filter Data
-filtered_df = df[df.Year == Year]
+filtered_df = df[df.'Year' == 'Year']
 
 # Filter Data
-filtered_df2 = df[df.Term == Term]
+filtered_df2 = df[df.'Term' == 'Term']
 
 
 
