@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 # Load Data
 df = pd.read_csv('university_student_dashboard_data.csv')
 
-
-
 # Title of the app
 st.title("University Admission Data")
 
@@ -22,16 +20,14 @@ df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 # Sidebar Filter
 st.sidebar.header("Filters")
-term_filter = st.sidebar.selectbox("Select Term", ['All'] + list(df['Term'].unique()))
+term_filter = st.sidebar.selectbox("Select Year-Term", ['All'] + list(df['YearTerm'].unique()))
 if term_filter != 'All':
-    df = df[df['Term'] == term_filter]
+    df = df[df['YearTerm'] == term_filter]
 
 # KPIs
 st.metric("Total Applications", df['Applications'].sum())
 st.metric("Total Admitted", df['Admitted'].sum())
 st.metric("Total Enrolled", df['Enrolled'].sum())
-
-
 
 # Chart
 st.subheader("University Trends in Admissions")
