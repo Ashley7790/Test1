@@ -49,9 +49,6 @@ st.plotly_chart(fig)
 # Group data for the stacked bar chart
 enrollment_data = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum()
 
-# Group data for the stacked bar chart
-enrollment_data = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum()
-
 # Create the stacked bar chart using matplotlib
 fig, ax = plt.subplots(figsize=(10, 6))
 enrollment_data.plot(kind='bar', stacked=True, ax=ax)
