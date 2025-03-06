@@ -14,7 +14,11 @@ st.title("University Admission Data")
 selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
 
 
-
+# Sidebar Filter
+st.sidebar.header("Filters")
+term_filter = st.sidebar.selectbox("Select Term", ['All'] + list(df['Term'].unique()))
+if department_filter != 'All':
+    df = df[df['Term'] == term_filter]
 
 
 
