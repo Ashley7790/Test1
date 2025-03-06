@@ -11,7 +11,7 @@ df = pd.read_csv('university_student_dashboard_data.csv')
 st.title("University Admission Data")
 
 # Create a sidebar filter for selecting a year
-#selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
+selected_year = st.sidebar.slider("Select Year:", int(df["Year"].min()), int(df["Year"].max()), int(df["Year"].min()))
 
 
 
@@ -24,4 +24,4 @@ st.title("University Admission Data")
 
 
 # Display the Plotly chart in Streamlit
-st.plotly_chart(fig)
+
