@@ -35,7 +35,8 @@ st.line_chart(df, x="YearTerm", y=["Admitted", "Enrolled", "Applications"])
 
 # Chart
 st.subheader("Total Enrollment")
-fig3 = px.bar(df, x="YearTerm", y="Enrolled")
+fig3 = px.bar(df, x="YearTerm", y="Enrolled",
+labels={'value':'Enrolled','YearTerm': 'Year and Term'})
 st.plotly_chart(fig3)
 
 # Visualize Enrollment by Department
