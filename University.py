@@ -20,9 +20,9 @@ df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 # Sidebar Filter
 st.sidebar.header("Filters")
-term_filter = st.sidebar.selectbox("Select Year-Term", ['All'] + list(df['YearTerm'].unique()))
+term_filter = st.sidebar.selectbox("Select Year", ['All'] + list(df['Year'].unique()))
 if term_filter != 'All':
-    df = df[df['YearTerm'] == term_filter]
+    df = df[df['Year'] == term_filter]
 
 # KPIs
 st.metric("Total Applications", df['Applications'].sum())
@@ -42,6 +42,13 @@ fig = px.line(df, x='YearTerm', y=['Retention Rate (%)', 'Student Satisfaction (
               title='Retention Rate and Student Satisfaction by Year and Term')
 
 st.plotly_chart(fig)
+
+
+# Visualize Enrollment by Department
+
+selected_columns = ['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled','Science Enrolled']
+df_limited = df[selected_columns]
+
 
 
 
