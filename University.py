@@ -48,9 +48,6 @@ if total_enrolled != 0:
 else:
   st.metric("Percent Enrolled", "N/A")
 
-# Display the metric
-st.metric("Percent Enrolled", f"{percent_enrolled:.2f}%")
-
 
 # Chart
 st.subheader("University Trends in Admissions")
