@@ -24,10 +24,6 @@ term_filter = st.sidebar.selectbox("Select Year", ['All'] + list(df['Year'].uniq
 if term_filter != 'All':
     df = df[df['Year'] == term_filter]
 
-
-
-
-
 # KPIs
 st.metric("Total Applications", df['Applications'].sum())
 st.metric("Total Admitted", df['Admitted'].sum())
@@ -37,6 +33,17 @@ st.metric("Total Enrolled", df['Enrolled'].sum())
 st.subheader("University Trends in Admissions")
 st.line_chart(df, x="YearTerm", y=["Admitted", "Enrolled", "Applications"])
 
+# Chart
+fig3 = px.bar(df, x="YearTerm", y="Enrolled", title="Total Enrollment")
+st.plotly_chart(fig3)
+
+# Visualize Enrollment by Department
+
+fig2 = px.line(df,x='YearTerm',y=['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled','Science Enrolled'],
+               labels={'value':'Students Enrolled','YearTerm': 'Year and Term'},
+                title='Student Enrollment by Department')
+
+st.plotly_chart(fig2)
 
 # Line chart for Retention Rate and Student Satisfaction
 #st.subheader("Retention Rate and Student Satisfaction Over Time")
@@ -47,19 +54,6 @@ fig = px.line(df, x='YearTerm', y=['Retention Rate (%)', 'Student Satisfaction (
 
 st.plotly_chart(fig)
 
-
-# Visualize Enrollment by Department
-
-fig2 = px.line(df,x='YearTerm',y=['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled','Science Enrolled'],
-               labels={'value':'Students Enrolled','YearTerm': 'Year and Term'},
-                title='Student Enrollment by Department')
-
-st.plotly_chart(fig2)
-
-
-# Chart
-fig3 = px.bar(df, x="YearTerm", y="Enrolled", title="Total Enrollment")
-st.plotly_chart(fig3)
 
 
 
