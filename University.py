@@ -26,9 +26,15 @@ if term_filter != 'All':
 
 # KPIs
 col1, col2, col3 = st.columns(3)
-st.metric("Total Applications", df['Applications'].sum())
-st.metric("Total Admitted", df['Admitted'].sum())
-st.metric("Total Enrolled", df['Enrolled'].sum())
+#st.metric("Total Applications", df['Applications'].sum())
+#st.metric("Total Admitted", df['Admitted'].sum())
+#st.metric("Total Enrolled", df['Enrolled'].sum())
+
+col1.metric("Total Applications", total_applications)
+col2.metric("Total Admitted", total_admitted)
+col3.metric("Total Enrolled", total_enrolled)
+
+
 
 # Calculate the percentage admitted
 total_admitted = df['Admitted'].sum()
@@ -50,10 +56,6 @@ if total_enrolled != 0:
   st.metric("Percent Enrolled", f"{percent_enrolled:.2f}%")
 else:
   st.metric("Percent Enrolled", "N/A")
-
-col1.metric("Total Applications", total_applications)
-col2.metric("Total Admitted", total_admitted)
-col3.metric("Total Enrolled", total_enrolled)
 
 
 # Chart
