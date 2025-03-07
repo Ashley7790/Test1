@@ -19,15 +19,13 @@ df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 
 # Sidebar Filter
-#st.sidebar.header("Filters")
-#term_filter = st.sidebar.selectbox("Select Year", ['All'] + list(df['Year'].unique()))
-#if term_filter != 'All':
-#    df = df[df['Year'] == term_filter]
-
-
-# Sidebar Filter
 st.sidebar.header("Filters")
-term_filter = st.sidebar.multiselect("Select Year", ['All'] + list(df['YearTerm'].unique()))
+term_filter = st.sidebar.selectbox("Select Year", ['All'] + list(df['Year'].unique()))
+if term_filter != 'All':
+    df = df[df['Year'] == term_filter]
+
+
+
 
 
 # KPIs
@@ -51,7 +49,6 @@ st.plotly_chart(fig)
 
 
 # Visualize Enrollment by Department
-
 
 fig2 = px.line(df,x='YearTerm',y=['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled','Science Enrolled'],
                labels={'value':'Students Enrolled','YearTerm': 'Year and Term'},
