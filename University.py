@@ -35,7 +35,7 @@ st.line_chart(df, x="YearTerm", y=["Admitted", "Enrolled", "Applications"])
 
 
 # Line chart for Retention Rate and Student Satisfaction
-st.subheader("Retention Rate and Student Satisfaction Over Time")
+#st.subheader("Retention Rate and Student Satisfaction Over Time")
 
 fig = px.line(df, x='YearTerm', y=['Retention Rate (%)', 'Student Satisfaction (%)'],
               labels={'value': 'Percent', 'YearTerm': 'Year and Term'},
