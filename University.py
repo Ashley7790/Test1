@@ -25,13 +25,13 @@ if term_filter != 'All':
     df = df[df['Year'] == term_filter]
 
 # KPIs
-col1, col2, col3 = st.columns(3)
-col4, col5 = st.columns(2)
+col1, col2, col3, col4, col5 = st.columns(5)
 
 col1.metric("Total Applications", df['Applications'].sum())
 col2.metric("Total Admitted", df['Admitted'].sum())
 col3.metric("Total Enrolled", df['Enrolled'].sum())
 col4.metric("Percent Admitted", f"{percent_admitted:.2f}%")
+col5.metric("Percent Enrolled", f"{percent_enrolled:.2f}%")
 
 
 # Calculate the percentage admitted
