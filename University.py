@@ -42,7 +42,7 @@ else:
   percent_admitted = 0  
 
 # Display the metric
-#st.metric("Percent Admitted", f"{percent_admitted:.2f}%")
+st.metric("Percent Admitted", f"{percent_admitted:.2f}%")
 
 # Calculate the percentage enrolled
 total_admitted = df['Admitted'].sum()
