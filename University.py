@@ -32,17 +32,17 @@ if term_filter != 'All':
 
 # Add in calculations for % admitted and % enrolled
 
-total_applications = df['Applications'].sum()
+# Calculate the percentage admitted
 total_admitted = df['Admitted'].sum()
-total_enrolled = df['Enrolled'].sum()
-percent_admitted = (total_admitted / total_applications) * 100
-percent_enrolled = (df[total_enrolled].sum() / total_admitted) * 100 
+total_applications = df['Applications'].sum()
 
-st.metric("Total Applications", total_applications)
-st.metric("Total Admitted", total_admitted)
-st.metric("Total Enrolled", df['Enrolled'].sum())
-st.metric("Percent Admitted", f"{percent_admitted:.2f}%") 
-st.metric("Percent Enrolled",f"{percent_enrolled:.2f}%")
+if total_applications > 0:
+  percent_admitted = (total_admitted / total_applications) * 100
+else:
+  percent_admitted = 0  # Handle cases where there are zero applications
+
+# Display the metric
+st.metric("Percent Admitted", f"{percent_admitted:.2f}%")
 
 
 
