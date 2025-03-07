@@ -8,7 +8,7 @@ import matplotlib as plt
 df = pd.read_csv('university_student_dashboard_data.csv')
 
 # Title of the app
-st.title("University Admission Data")
+st.title("University Admission Data 2015 to 2024")
 
 # Convert 'Year' and 'Term' columns to string type if they are not already
 df['Year'] = df['Year'].astype(str)
