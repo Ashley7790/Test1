@@ -19,9 +19,16 @@ df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 
 # Sidebar Filter
+#st.sidebar.header("Filters")
+#term_filter = st.sidebar.selectbox("Select Year", ['All'] + list(df['Year'].unique()))
+#if term_filter != 'All':
+#    df = df[df['Year'] == term_filter]
+
+
+# Sidebar Filter
 st.sidebar.header("Filters")
 term_filter = st.sidebar.selectbox("Select Year", ['All'] + list(df['Year'].unique()))
-if term_filter != 'All':
+if department_filter != 'All':
     df = df[df['Year'] == term_filter]
 
 # KPIs
