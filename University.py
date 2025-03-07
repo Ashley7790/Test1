@@ -31,7 +31,8 @@ st.metric("Total Enrolled", df['Enrolled'].sum())
 
 # Chart
 st.subheader("University Trends in Admissions")
-st.line_chart(df, x="YearTerm", y=["Admitted", "Enrolled", "Applications"])
+st.line_chart(df, x="YearTerm", y=["Admitted", "Enrolled", "Applications"],
+             labels={'value':'Enrolled','YearTerm': 'Year and Term'}))
 
 # Chart
 st.subheader("Total Enrollment")
