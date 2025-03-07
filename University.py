@@ -57,9 +57,10 @@ fig2 = px.line(df,x='YearTerm',y=['Engineering Enrolled', 'Business Enrolled', '
 st.plotly_chart(fig2)
 
 
-
-
-
+# Chart
+st.subheader("Total Enrollment")
+total_enrollment = df.groupby('Enrolled')['Total'].sum().reset_index()
+st.bar_chart(total_enrollment.set_index('Enrolled'))
 
 
 
