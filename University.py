@@ -31,8 +31,6 @@ col1.metric("Total Applications", df['Applications'].sum())
 col2.metric("Total Admitted", df['Admitted'].sum())
 col3.metric("Total Enrolled", df['Enrolled'].sum())
 
-
-
 # Calculate the percentage admitted
 total_admitted = df['Admitted'].sum()
 total_applications = df['Applications'].sum()
@@ -53,9 +51,6 @@ if total_enrolled != 0:
   st.metric("Percent Enrolled", f"{percent_enrolled:.2f}%")
 else:
   st.metric("Percent Enrolled", "N/A")
-
-
-
 
 # Chart
 st.subheader("University Trends in Admissions")
