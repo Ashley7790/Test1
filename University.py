@@ -27,7 +27,7 @@ df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 # Sidebar Filter
 st.sidebar.header("Filters")
-term_filter = st.sidebar.selectbox("Select Year", ['All'] + list(df['Year'].unique()))
+term_filter = st.sidebar.multiselect("Select Year", ['All'] + list(df['Year'].unique()))
 if term_filter != 'All':
     df = df[df['Year'] == term_filter]
 
