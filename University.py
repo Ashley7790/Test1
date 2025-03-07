@@ -50,18 +50,6 @@ st.plotly_chart(fig)
 
 
 
-# Bar chart for Enrolled students by category
-st.subheader("Enrolled Students by Category")
-
-# Group data by 'YearTerm' and sum enrollments for each category
-enrollment_by_category = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum().reset_index()
-
-# Create the bar chart using Plotly
-fig2 = px.bar(enrollment_by_category, x='YearTerm', 
-             y=['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled'],
-             labels={'value': 'Number of Enrolled Students', 'variable': 'Category'},
-             title='Enrolled Students by Category and Year Term')
-st.plotly_chart(fig2)
 
 
 
