@@ -46,20 +46,22 @@ fig = px.line(df, x='YearTerm', y=['Retention Rate (%)', 'Student Satisfaction (
               title='Retention Rate and Student Satisfaction by Year and Term')
 st.plotly_chart(fig)
 
-fig2, ax = plt.subplots()
-
-ax.bar(df['YearTerm'], df['Engineering Enrolled'], label='Engineering Enrolled')
-ax.bar(df['YearTerm'], df['Business Enrolled'], bottom=df['Engineering Enrolled'], label='Business Enrolled')
-ax.bar(df['YearTerm'], df['Arts Enrolled'], bottom=df['Engineering Enrolled'] + df['Business Enrolled'], label='Arts Enrolled')
-ax.bar(df['YearTerm'], df['Science Enrolled'], bottom=df['Engineering Enrolled'] + df['Business Enrolled'] + df['Arts Enrolled'], label='Science Enrolled')
 
 
-ax.set_xlabel('Year and Term')
-ax.set_ylabel('Number of Students')
-ax.set_title('Enrolled Students by Faculty')
-ax.legend()
 
-st.pyplot(fig2)
+
+# Bar chart for Enrolled students by category
+st.subheader("Enrolled Students by Category")
+
+# Group data by 'YearTerm' and sum enrollments for each category
+enrollment_by_category = df.groupby('YearTerm')[['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled']].sum().reset_index()
+
+# Create the bar chart using Plotly
+fig2 = px.bar(enrollment_by_category, x='YearTerm', 
+             y=['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled', 'Science Enrolled'],
+             labels={'value': 'Number of Enrolled Students', 'variable': 'Category'},
+             title='Enrolled Students by Category and Year Term')
+st.plotly_chart(fig2)
 
 
 
