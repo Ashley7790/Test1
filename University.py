@@ -49,8 +49,11 @@ st.plotly_chart(fig)
 selected_columns = ['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled','Science Enrolled']
 df_limited = df[selected_columns]
 
+fig2 = px.line(df_limited,x='YearTerm',y=['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled','Science Enrolled'],
+               labels='value':'Students Enrolled','YearTerm': 'Year and Term'},
+                title='Student Enrollment by Department')
 
-
+st.plotly_chart(fig2)
 
 
 
