@@ -41,7 +41,7 @@ st.plotly_chart(fig3)
 # Visualize Enrollment by Department
 st.subheader("Student Enrollment by Department")
 fig2 = px.line(df,x='YearTerm',y=['Engineering Enrolled', 'Business Enrolled', 'Arts Enrolled','Science Enrolled'],
-               labels={'value':'Students Enrolled','YearTerm': 'Year and Term'})
+               labels={'value':'Students Enrolled':'Enrolled','YearTerm': 'Year and Term'})
 
 st.plotly_chart(fig2)
 
