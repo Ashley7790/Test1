@@ -27,9 +27,8 @@ df['YearTerm'] = df['Year'] + ' ' + df['Term']
 
 # Sidebar Filter
 st.sidebar.header("Filters")
-term_filter = st.sidebar.multiselect("Select Year", ['All'] + list(df['Year'].unique()))
-if term_filter != 'All':
-    df = df[df['Year'] == term_filter]
+term_filter = st.sidebar.multiselect("Select Year", ['All'] + list(df['YearTerm'].unique()))
+
 
 # KPIs
 st.metric("Total Applications", df['Applications'].sum())
