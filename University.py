@@ -37,9 +37,12 @@ df['YearTerm'] = df['Year'] + ' ' + df['Term']
 # Sidebar Filter
 st.sidebar.header("Filters")
 selected_years = st.sidebar.multiselect("Select Year", options=df['Year'].unique(), default=list(df['Year'].unique()))
+selected_term = st.sidebar.multiselect("Select Term", options=df['Term'].unique(), default=list(df['Term'].unique()))
 
 if selected_years:
     df = df[df['Year'].isin(selected_years)]
+if selected_term:
+    df = df[df['Term'].isin(selected_term)]
 
 
 
