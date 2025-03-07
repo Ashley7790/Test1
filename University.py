@@ -37,15 +37,13 @@ if total_applications > 0:
 else:
   percent_admitted = 0  
 
-# Display the metric
-st.metric("Percent Admitted", f"{percent_admitted:.2f}%")
 
 # Calculate the percentage enrolled
 total_admitted = df['Admitted'].sum()
 total_enrolled = df['Enrolled'].sum()
 
 if total_enrolled != 0:
-  percent_enrolled = (total_admitted / total_enrolled) * 100
+  percent_enrolled = (total_enrolled / total_admitted) * 100
   st.metric("Percent Enrolled", f"{percent_enrolled:.2f}%")
 else:
   st.metric("Percent Enrolled", "N/A")
