@@ -26,9 +26,9 @@ if term_filter != 'All':
 
 # KPIs
 col1, col2, col3 = st.columns(3)
-#st.metric("Total Applications", df['Applications'].sum())
-#st.metric("Total Admitted", df['Admitted'].sum())
-#st.metric("Total Enrolled", df['Enrolled'].sum())
+st.metric("Total Applications", df['Applications'].sum())
+st.metric("Total Admitted", df['Admitted'].sum())
+st.metric("Total Enrolled", df['Enrolled'].sum())
 
 col1.metric("Total Applications", total_applications)
 col2.metric("Total Admitted", total_admitted)
