@@ -25,9 +25,27 @@ if term_filter != 'All':
     df = df[df['Year'] == term_filter]
 
 # KPIs
-st.metric("Total Applications", df['Applications'].sum())
-st.metric("Total Admitted", df['Admitted'].sum())
+#st.metric("Total Applications", df['Applications'].sum())
+#st.metric("Total Admitted", df['Admitted'].sum())
+#st.metric("Total Enrolled", df['Enrolled'].sum())
+
+
+# Add in calculations for % admitted and % enrolled
+
+total_applications = df['Applications'].sum()
+total_admitted = df['Admitted'].sum()
+total_enrolled = df['Enrolled'].sum()
+percent_admitted = (total_admitted / total_applications) * 100
+percent_enrolled = (df[total_enrolled].sum() / total_admitted) * 100 
+
+st.metric("Total Applications", total_applications)
+st.metric("Total Admitted", total_admitted)
 st.metric("Total Enrolled", df['Enrolled'].sum())
+st.metric("Percent Admitted", f"{percent_admitted:.2f}%") 
+st.metric("Percent Enrolled",f"{percent_enrolled:.2f}%")
+
+
+
 
 # Chart
 st.subheader("University Trends in Admissions")
