@@ -59,7 +59,7 @@ st.plotly_chart(fig2)
 
 # Chart
 st.subheader("Total Enrollment")
-total_enrollment = df.groupby('Enrolled')['Total'].sum().reset_index()
+total_enrollment = df.groupby('Enrolled').sum().reset_index()
 st.bar_chart(total_enrollment.set_index('Enrolled'))
 
 
